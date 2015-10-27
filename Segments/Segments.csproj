@@ -36,7 +36,7 @@
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SegmentControl.cs" />
-    <Compile Include="CustomFrame.cs" />
+    <Compile Include="BorderView.cs" />
     <Compile Include="TapContentView.cs" />
     <Compile Include="TapEventArgs.cs" />
   </ItemGroup>
