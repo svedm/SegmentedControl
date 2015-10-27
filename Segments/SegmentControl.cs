@@ -125,26 +125,22 @@ namespace Segments
             var verticalStack = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,     
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,     
             };
 
             var count = _layout.Children.Count;
             foreach (var label in labels)
             {
+                label.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                label.VerticalOptions = LayoutOptions.CenterAndExpand;
+                label.GestureRecognizers.Add(new TapGestureRecognizer(o => SetSelectedSegment(_layout.Children.Count)));
                 verticalStack.Children.Add(label);
             }
-
-            var tapView = new TapContentView
-            {
-                Content = verticalStack,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                TapCommand = _clickedCommand,
-                TapCommandParameter = _layout.Children.Count
-            };
+                
             
             _layout.BackgroundColor = TintColor;
-            _layout.Children.Add(tapView);
+            _layout.Children.Add(verticalStack);
 
             SetSelectedState(_layout.Children.Count - 1, _layout.Children.Count - 1 == _selectedSegment);
         }
@@ -194,21 +190,21 @@ namespace Segments
                 return; //Out of bounds
             }
 
-            var tapView = (TapContentView)_layout.Children[indexer];
+            var stackLayout = (StackLayout)_layout.Children[indexer];
 
             // TODO: TextColor needs to be a bound property
             if (isSelected)
             {
-                tapView.BackgroundColor = TintColor;
-                foreach (Label label in ((StackLayout)tapView.Content).Children)
+                stackLayout.BackgroundColor = TintColor;
+                foreach (Label label in stackLayout.Children)
                 {
                     label.TextColor = Color.White;
                 }
             }
             else
             {
-                tapView.BackgroundColor = Color.White;
-                foreach (Label label in ((StackLayout)tapView.Content).Children)
+                stackLayout.BackgroundColor = Color.White;
+                foreach (Label label in stackLayout.Children)
                 {
                     label.TextColor = TintColor;
                 }
