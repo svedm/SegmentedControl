@@ -7,9 +7,9 @@ namespace Segments
         public TestPage()
         {
             InitializeComponent();
-            segmentControl.AddSegment("Green");
-            segmentControl.AddSegment("Yellow");
-            segmentControl.AddSegment("Red");
+            segmentControl.AddSegment(new Label { Text="Green" }, new Label { Text="test", FontSize=10 });
+            segmentControl.AddSegment(new Label { Text="Yellow" });
+            segmentControl.AddSegment(new Label { Text="Yellow" });
         }
 
         private void OnSelectedSegmentChanged(object sender, int segmentIndex)
