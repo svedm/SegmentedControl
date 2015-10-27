@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Segments
 {
@@ -10,33 +7,25 @@ namespace Segments
         public TestPage()
         {
             InitializeComponent();
+            segmentControl.AddSegment("Green");
+            segmentControl.AddSegment("Yellow");
+            segmentControl.AddSegment("Red");
+        }
 
-            var segment = new SegmentControl
+        private void OnSelectedSegmentChanged(object sender, int segmentIndex)
+        {
+            switch (segmentIndex)
             {
-                TintColor = Color.Green
-            };
-
-            segment.AddSegment("Green");
-            segment.AddSegment("Yellow");
-            segment.AddSegment("Red");
-
-            segment.SelectedSegmentChanged += (sender, segmentIndex) =>
-            {
-                switch (segmentIndex)
-                {
-                    case 0:
-                        segment.TintColor = Color.Green;
-                        break;
-                    case 1:
-                        segment.TintColor = Color.Yellow;
-                        break;
-                    case 2:
-                        segment.TintColor = Color.Red;
-                        break;
-                }
-            };
-
-            this.layout.Children.Add(segment);
+                case 0:
+                    segmentControl.TintColor = Color.Green;
+                    break;
+                case 1:
+                    segmentControl.TintColor = Color.Yellow;
+                    break;
+                case 2:
+                    segmentControl.TintColor = Color.Red;
+                    break;
+            }
         }
     }
 }
