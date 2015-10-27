@@ -95,12 +95,12 @@ namespace Segments
         public SegmentControl()
         {
             _layout = new StackLayout
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    Orientation = StackOrientation.Horizontal,
-                    Padding = new Thickness(1),
-                    Spacing = 1
-                };
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Horizontal,
+                Padding = new Thickness(1),
+                Spacing = 1
+            };
 
             HorizontalOptions = LayoutOptions.FillAndExpand;
             VerticalOptions = LayoutOptions.Start;
@@ -115,24 +115,33 @@ namespace Segments
         /// Adds the segment.
         /// </summary>
         /// <param name="segmentText">The segment text.</param>
-        public void AddSegment(string segmentText)
+        public void AddSegment(params Label[] labels)
         {
-            // TODO: TextColor needs to be a bound property
-            var button = new Button
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    BorderColor = TintColor,
-                    BorderRadius = 0,
-                    BorderWidth = 0,
-                    Text = segmentText,
-                    TextColor = TintColor,
-                    BackgroundColor = Color.White,
-                    Command = _clickedCommand,
-                    CommandParameter = _layout.Children.Count,
-                };
+            if (labels == null)
+            {
+                throw new ArgumentException("labels cannot be empty");
+            }
 
+            var verticalStack = new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,     
+            };
+
+            foreach (var label in labels)
+            {
+                verticalStack.Children.Add(label);
+            }
+
+            var tapView = new TapContentView
+            {
+                Content = verticalStack,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+            };
+            
             _layout.BackgroundColor = TintColor;
-            _layout.Children.Add(button);
+            _layout.Children.Add(tapView);
 
             SetSelectedState(_layout.Children.Count - 1, _layout.Children.Count - 1 == _selectedSegment);
         }
@@ -182,23 +191,29 @@ namespace Segments
                 return; //Out of bounds
             }
 
-            var button = (Button)_layout.Children[indexer];
+            var tapView = (TapContentView)_layout.Children[indexer];
 
             // TODO: TextColor needs to be a bound property
             if (isSelected)
             {
-                button.BackgroundColor = TintColor;
-                button.TextColor = Color.White;
+                tapView.BackgroundColor = TintColor;
+                foreach (Label label in ((StackLayout)tapView.Content).Children)
+                {
+                    label.TextColor = Color.White;
+                }
             }
             else
             {
-                button.BackgroundColor = Color.White;
-                button.TextColor = TintColor;
+                tapView.BackgroundColor = Color.White;
+                foreach (Label label in ((StackLayout)tapView.Content).Children)
+                {
+                    label.TextColor = TintColor;
+                }
             }
 
             if (setBorderColor)
             {
-                button.BorderColor = TintColor;
+                //button.BorderColor = TintColor;
             }
         }
     }

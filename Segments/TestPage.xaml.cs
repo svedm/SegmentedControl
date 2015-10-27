@@ -16,9 +16,9 @@ namespace Segments
                 TintColor = Color.Green
             };
 
-            segment.AddSegment("Green");
-            segment.AddSegment("Yellow");
-            segment.AddSegment("Red");
+            segment.AddSegment(new Label { Text="Green" }, new Label { Text="test", FontSize=10 });
+            segment.AddSegment(new Label { Text="Yellow" });
+            segment.AddSegment(new Label { Text="Yellow" });
 
             segment.SelectedSegmentChanged += (sender, segmentIndex) =>
             {
