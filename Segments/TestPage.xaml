@@ -5,13 +5,6 @@
     xmlns:controls="clr-namespace:Segments;assembly=Segments" 
     x:Class="Segments.TestPage"
     BackgroundColor="Silver">
-    <StackLayout Padding="20">
-        <controls:SegmentedControl>
-            <controls:SegmentedControl.Children>
-                <controls:SegmentedControlOption Text="One" />
-                <controls:SegmentedControlOption Text="Two" />
-                <controls:SegmentedControlOption Text="Ololo" />
-            </controls:SegmentedControl.Children>
-        </controls:SegmentedControl>
+    <StackLayout Padding="20" x:Name="layout">
     </StackLayout>
 </ContentPage>
