@@ -129,6 +129,7 @@ namespace Segments
                 VerticalOptions = LayoutOptions.CenterAndExpand,     
             };
 
+            var count = _layout.Children.Count;
             foreach (var label in labels)
             {
                 verticalStack.Children.Add(label);
@@ -138,6 +139,8 @@ namespace Segments
             {
                 Content = verticalStack,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
+                TapCommand = _clickedCommand,
+                TapCommandParameter = _layout.Children.Count
             };
             
             _layout.BackgroundColor = TintColor;
