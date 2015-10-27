@@ -5,11 +5,6 @@
     xmlns:controls="clr-namespace:Segments;assembly=Segments" 
     x:Class="Segments.TestPage"
     BackgroundColor="Silver">
-    <StackLayout Padding="20">
-        <controls:SegmentControl x:Name="segmentControl" 
-            BorderWidth="1"
-            CornerRadius="5"
-            TintColor="Green"
-            SelectedSegmentChanged="OnSelectedSegmentChanged"/>
+    <StackLayout Padding="20" x:Name="layout">
     </StackLayout>
 </ContentPage>

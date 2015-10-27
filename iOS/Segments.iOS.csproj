@@ -115,6 +115,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="BorderViewRenderer.cs" />
+    <Compile Include="TapContentViewNative.cs" />
+    <Compile Include="BaseViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />
