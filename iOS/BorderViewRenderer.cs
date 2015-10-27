@@ -4,14 +4,14 @@ using Xamarin.Forms.Platform.iOS;
 using Segments.iOS;
 using UIKit;
 
-[assembly:ExportRenderer(typeof(CustomFrame), typeof(CustomFrameRenderer))]
+[assembly:ExportRenderer(typeof(BorderView), typeof(BorderViewRenderer))]
 
 namespace Segments.iOS
 {
-    public class CustomFrameRenderer : FrameRenderer
+    public class BorderViewRenderer : ViewRenderer
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
-        {            
+       protected override void OnElementChanged(ElementChangedEventArgs<View> e)
+        {
             base.OnElementChanged(e);
             NativeView.Layer.MasksToBounds = true;
             NativeView.Layer.CornerRadius = 5;
