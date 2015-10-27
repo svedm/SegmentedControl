@@ -7,7 +7,7 @@ namespace Segments
     /// <summary>
     /// Class SegmentControl.
     /// </summary>
-    public class SegmentControl : ContentView
+    public class SegmentControl : CustomFrame
     {
         /// <summary>
         /// The layout
