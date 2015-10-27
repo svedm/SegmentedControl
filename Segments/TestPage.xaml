@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:Segments;assembly=Segments" 
+    x:Class="Segments.TestPage"
+    BackgroundColor="Silver">
+    <StackLayout Padding="20">
+        <controls:SegmentedControl>
+            <controls:SegmentedControl.Children>
+                <controls:SegmentedControlOption Text="One" />
+                <controls:SegmentedControlOption Text="Two" />
+                <controls:SegmentedControlOption Text="Ololo" />
+            </controls:SegmentedControl.Children>
+        </controls:SegmentedControl>
+    </StackLayout>
+</ContentPage>
